@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        nav{
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: white;
+        }
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .card{
+            width: clamp(300px, 100%, 500px);
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 10px;
+            font-size: 20px;
+            transition-property: background-color;
+            transition-timing-function: ease-in-out;
+            transition-behavior: linear;
+            transition-duration: .5s;
+
+        }
+
+        form{
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            flex-direction: column;
+        }
+        input{
+            width: 300px;
+            height: 40px;
+            margin: 10px;
+            padding: 10px;
+        }
+        button{
+            width: 300px;
+            height: 40px;
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 3px;
+            transition-property: border-radius;
+            transition-timing-function: ease-in-out;
+            transition-behavior: linear;
+            transition-duration: .1s;
+        }
+        button:hover{
+            border-radius: 10px;
+
+        }
+        .card:hover{
+            background-color: rgba(128, 128, 128, 0.438);
+        }
+
+        a{
+            text-decoration: none;
+            color: rgb(32, 32, 196);
+        }
+        .link{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- nav -->
+
+    <nav>
+        <span>Todo App</span>
+    </nav>
+
+    <!-- form -->
+     <form action="/upload" method="post">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="content" placeholder="Content" required>
+        <button type="submit">Submit</button>
+     </form>
+
+
+    <!-- content -->
+    <div class="container">
+        <% for(let i=0; i<files.length; i++) {%>
+            <div class="card">
+                <div style="height: 80%;">
+                    <%= files[i].split(".")[0] %>
+                </div>
+                <div class="link">
+                    <a href="/content/<%= files[i].split('.')[0] %>">Read more...</a>
+                 </div>
+            </div>
+            
+         <% } %>
+         
+    </div>
+</body>
+</html>
